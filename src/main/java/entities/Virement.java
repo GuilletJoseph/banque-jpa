@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @Table(name = "virement")
 
 
-public class Virement {
+public class Virement extends Operation{
 	    private int id;	    
 	    private String benef;	
 	    

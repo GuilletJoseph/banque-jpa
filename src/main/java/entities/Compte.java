@@ -39,6 +39,19 @@ public class Compte {
 
 		
 
+		public Compte() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+		public Compte(String type, String numero, double solde, double taux) {
+			super();
+			this.type = type;
+			this.numero = numero;
+			this.solde = solde;
+			this.taux = taux;
+		}
+
 		@Id
 		@Column(name = "ID")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,7 +98,14 @@ public class Compte {
 			this.type = type;
 		}
 		
-		@ManyToMany(mappedBy="compte")
+		@ManyToMany(cascade = {CascadeType.ALL})
+		 @JoinTable(name="client_compte",
+				 joinColumns= @JoinColumn(name="ID_COMPTE", referencedColumnName="ID"),
+				 inverseJoinColumns= @JoinColumn(name="ID_CLIENT", referencedColumnName="ID")
+				 )
+		
+		
+		//@ManyToMany(cascade = {CascadeType.ALL},  mappedBy="compte")
 		public Set<Client> getClient() {
 			return client;
 		}
@@ -95,7 +115,7 @@ public class Compte {
 		}
 		
 		
-		@OneToMany(mappedBy = "compte")
+		@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "compte")
 		public Set<Operation> getOperation() {
 			return operation;
 		}

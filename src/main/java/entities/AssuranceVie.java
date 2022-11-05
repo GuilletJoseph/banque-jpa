@@ -27,7 +27,14 @@ import javax.persistence.Table;
 
 
 public class AssuranceVie extends Compte{
-	    private int id;	 
+	
+
+		public AssuranceVie(String type, String numero, double solde, double taux) {
+		super(type, numero, solde, taux);
+		
+	}
+
+		private int id;	 
 	    private LocalDate dateFin;		
 		@Id
 		@Column(name = "ID")

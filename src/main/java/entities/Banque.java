@@ -26,12 +26,24 @@ import javax.persistence.Table;
 
 public class Banque {
 	    private int id;	    
-	    private String nom;		
-	     
-	    
-	   
+	    private String nom;		  
 
+		public Banque(int id) {
+			super();
+			this.id = id;
+		}
+
+
+
+		public Banque(String nom) {
+			super();
+			this.nom = nom;
+		}
 		private Set<Client> client=new HashSet<Client>(); 
+		
+		
+		
+		
 		@Id
 		@Column(name = "ID")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)

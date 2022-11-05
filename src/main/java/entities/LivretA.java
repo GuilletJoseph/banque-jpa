@@ -26,7 +26,12 @@ import javax.persistence.Table;
 
 
 public class LivretA extends Compte{
-	    private int id;	    
+	    public LivretA(String type, String numero, double solde, double taux) {
+		super(type, numero, solde, taux);
+		// TODO Auto-generated constructor stub
+	}
+
+		private int id;	    
 	    	
 		@Id
 		@Column(name = "ID")  

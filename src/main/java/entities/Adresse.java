@@ -10,11 +10,20 @@ public class Adresse {
 	private int numeroRue;
     private String rue ;   
     private int codePostal;
-    private String ville;
+    private String ville; 
     
-    
-    
-    @Column(name = "NUMERO_RUE")
+    public Adresse() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Adresse(int numeroRue, String rue, int codePostal, String ville) {
+		super();
+		this.numeroRue = numeroRue;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+	}
+	@Column(name = "NUMERO_RUE")
 	public int getNumero() {
 		return numeroRue;
 	}
