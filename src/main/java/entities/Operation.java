@@ -17,12 +17,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "client")
+@Table(name = "operation")
 
 
 public class Operation {
@@ -30,7 +31,7 @@ public class Operation {
 	    private Date date;
 	    private double montant ;   
 	    private String motif;
-		
+	    private Compte compte;  
 		@Id
 		@Column(name = "ID")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)    
@@ -70,7 +71,15 @@ public class Operation {
 		}
 		
 		
-		
+		 @ManyToOne
+		    @JoinColumn(name = "ID_COMPTE")
+		    public Compte getCompte() {
+				return compte;
+			}
+
+			public void setCompte(Compte compte) {
+				this.compte = compte;
+			}
 		
 		
 		    

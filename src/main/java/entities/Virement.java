@@ -22,52 +22,32 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "banque")
+@Table(name = "virement")
 
-public class Banque {
+
+public class Virement {
 	    private int id;	    
-	    private String nom;		
-	     
+	    private String benef;	
 	    
-	   
-
-		private Set<Client> client=new HashSet<Client>(); 
+	    
 		@Id
 		@Column(name = "ID")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		  public int getId() {
-				return id;
-			}
-
-		
+	    
+	    public int getId() {
+			return id;
+		}
 
 		public void setId(int id) {
 			this.id = id;
 		}
 		
-		@Column(name = "NOM")
-		public String getNom() {
-			return nom;
+		@Column(name = "BENEFICIARE")
+		public String getBen() {
+			return benef;
 		}
 
-		public void setNom(String nom) {
-			this.nom = nom;
+		public void setBen(String benef) {
+			this.benef = benef;
 		}
-		
-		
-		@OneToMany(mappedBy = "banque")	 
-	    public Set<Client> getClient() {
-			return client;
-		}
-
-
-
-		public void setClient(Set<Client> client) {
-			this.client = client;
-		}
-		
-		
-		
-		
-		
 }

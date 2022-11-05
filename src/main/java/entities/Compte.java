@@ -14,6 +14,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -23,13 +25,20 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "compte")
-
+@Inheritance(strategy = InheritanceType.JOINED)
 
 public class Compte {
-	    private int id;	    
+	    private int id;	
+	    private String type;
 	    private String numero;
 	    private double solde;   
+	    private double taux;
+	    private Set<Client> client;
+		private Set<Operation> operation;
 		
+
+		
+
 		@Id
 		@Column(name = "ID")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,6 +67,50 @@ public class Compte {
 			this.solde = solde;
 		}
 		
+		@Column(name = "TAUX")
+		public double getTaux() {
+			return taux;
+		}
+
+		public void setTaux(double taux) {
+			this.taux = taux;
+		}
+		
+		@Column(name = "TYPE")    
+	    public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
+		}
+		
+		@ManyToMany(mappedBy="compte")
+		public Set<Client> getClient() {
+			return client;
+		}
+
+		public void setClient(Set<Client> client) {
+			this.client = client;
+		}
+		
+		
+		@OneToMany(mappedBy = "compte")
+		public Set<Operation> getOperation() {
+			return operation;
+		}
+
+		public void setOperation(Set<Operation> operation) {
+			this.operation = operation;
+		}
+		
+		
+		
+		
 		
 }
+
+
+
+
 

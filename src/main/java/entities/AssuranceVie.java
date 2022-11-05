@@ -1,5 +1,6 @@
 package entities;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,52 +23,33 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "banque")
+@Table(name = "assurancevie")
 
-public class Banque {
-	    private int id;	    
-	    private String nom;		
-	     
-	    
-	   
 
-		private Set<Client> client=new HashSet<Client>(); 
+public class AssuranceVie extends Compte{
+	    private int id;	 
+	    private LocalDate dateFin;		
 		@Id
 		@Column(name = "ID")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		  public int getId() {
-				return id;
-			}
-
-		
+	    public int getId() {
+			return id;
+		}
 
 		public void setId(int id) {
 			this.id = id;
 		}
 		
-		@Column(name = "NOM")
-		public String getNom() {
-			return nom;
+		
+		
+		@Column(name = "DATE_FIN")
+		public LocalDate getDateFin() {
+			return dateFin;
 		}
 
-		public void setNom(String nom) {
-			this.nom = nom;
-		}
-		
-		
-		@OneToMany(mappedBy = "banque")	 
-	    public Set<Client> getClient() {
-			return client;
+		public void setDateFin(LocalDate dateFin) {
+			this.dateFin = dateFin;
 		}
 
-
-
-		public void setClient(Set<Client> client) {
-			this.client = client;
-		}
-		
-		
-		
-		
-		
 }
+

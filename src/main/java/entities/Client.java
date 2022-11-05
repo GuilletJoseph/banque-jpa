@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,9 +31,10 @@ public class Client {
 	    private String nom;
 	    private String prenom ;   
 	    private Date dateN;
+	    private Banque banque;
+	    private Set<Compte> compte;
 	    @Embedded
-	    private Adresse adresse;
-		
+	    private Adresse adresse;	
 		@Id
 		@Column(name = "ID")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,7 +73,42 @@ public class Client {
 
 		public void setDateN(Date dateN) {
 			this.dateN = dateN;
-		}	    
+		}	 
+		
+		    @ManyToOne
+		    @JoinColumn(name = "ID_BANQUE")
+		    public Banque getBanque() {
+				return banque;
+			}
+
+			public void setBanque(Banque banque) {
+				this.banque = banque;
+			}
+
+		
+			 @ManyToMany
+			 @JoinTable(name="client_compte",
+			 joinColumns= @JoinColumn(name="ID_CLIENT", referencedColumnName="ID"),
+			 inverseJoinColumns= @JoinColumn(name="ID_COMPTE", referencedColumnName="ID")
+			 )
+			public Set<Compte> getCompte() {
+				return compte;
+			}
+
+			public void setCompte(Set<Compte> compte) {
+				this.compte = compte;
+			}
+		
+		
+			public Adresse getAdresse() {
+				return adresse;
+			}
+
+			public void setAdresse(Adresse adresse) {
+				this.adresse = adresse;
+			}
+		
+		
 }
 
 
