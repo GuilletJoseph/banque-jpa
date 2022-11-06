@@ -43,12 +43,13 @@ public class Client {
 		}
 
 
-		public Client(String nom, String prenom, LocalDate dateN, Adresse adresse) {
+		public Client(String nom, String prenom, LocalDate dateN, Banque banque , Adresse adresse) {
 			super();
 			this.nom = nom;
 			this.prenom = prenom;
 			this.dateN = dateN;
 			this.adresse = adresse;
+			this.banque=banque;
 		}
 
 		@Id
@@ -124,6 +125,9 @@ public class Client {
 			}
 		
 		
+			
+			
+			
 }
 
 

@@ -1,5 +1,6 @@
 package entities;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +15,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -23,12 +26,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "operation")
 
 
 public class Operation {
 	    private int id;	    
-	    private Date date;
+	    private LocalDate date;
 	    private double montant ;   
 	    private String motif;
 	    private Compte compte;  
@@ -44,12 +48,12 @@ public class Operation {
 		}
 		
 		@Column(name = "DATE")
-		public Date getDate() {
+		public LocalDate getDate() {
 			return date;
 		}
 
-		public void setDate(Date date) {
-			this.date = date;
+		public void setDate(LocalDate localDate) {
+			this.date = localDate;
 		}
 		
 		@Column(name = "MONTANT")

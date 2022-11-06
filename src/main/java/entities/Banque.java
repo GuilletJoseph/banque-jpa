@@ -28,9 +28,13 @@ public class Banque {
 	    private int id;	    
 	    private String nom;		  
 
-		public Banque(int id) {
+	
+		
+
+		public Banque(int id, String nom) {
 			super();
 			this.id = id;
+			this.nom = nom;
 		}
 
 

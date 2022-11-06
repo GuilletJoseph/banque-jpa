@@ -27,7 +27,11 @@ import javax.persistence.Table;
 
 
 public class AssuranceVie extends Compte{
-	
+
+		public AssuranceVie() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 		public AssuranceVie(String type, String numero, double solde, double taux) {
 		super(type, numero, solde, taux);

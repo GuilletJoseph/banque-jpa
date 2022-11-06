@@ -27,9 +27,19 @@ import javax.persistence.Table;
 
 public class Virement extends Operation{
 	    private int id;	    
-	    private String benef;	
+	    private String benef;	   
 	    
-	    
+		public Virement() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+		public Virement(int id, String benef) {
+			super();
+			this.id = id;
+			this.benef = benef;
+		}
+
 		@Id
 		@Column(name = "ID")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
