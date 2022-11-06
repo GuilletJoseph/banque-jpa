@@ -89,8 +89,14 @@ public class BanqueJpaApplication {
 	transaction.commit();
 	
 	
-	
-	
+	Operation ope=new Operation();
+	ope.setDate(LocalDate.of(2022, Month.JUNE, 5));
+	ope.setMontant(300);
+	ope.setMotif("iiii");
+	ope.setCompte(null);
+	transaction.begin();
+	em.persist(ope);
+	transaction.commit();
 	}
 
 }
