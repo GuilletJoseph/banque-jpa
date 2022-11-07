@@ -31,6 +31,13 @@ public class Banque {
 	
 		
 
+		public Banque() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+
+
 		public Banque(int id, String nom) {
 			super();
 			this.id = id;

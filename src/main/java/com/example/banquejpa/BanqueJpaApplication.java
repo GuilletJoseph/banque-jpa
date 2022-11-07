@@ -47,13 +47,17 @@ public class BanqueJpaApplication {
 		transaction.begin();
 		em.persist(assVie);
 		transaction.commit();	
+		Banque bn=new Banque("banque of France");		
+		transaction.begin();
+		em.persist(bn);
+		transaction.commit();	
 		
 	Client client=new Client();
 	client.setNom("guillet");
 	client.setPrenom("Joseph");		
 	client.setDateN( LocalDate.of(2000, Month.JUNE, 5));
 	client.setAdresse(new Adresse(17,"rue des sables",44000, "nantes"));
-	client.setBanque(new Banque("banque of France"));
+	client.setBanque(bn);
 	Set <Compte> comp=new HashSet();
 	comp.add(new Compte("livretA","12",3500,2));
 	comp.add(new Compte("assuranceVie","34",5000,3));
@@ -69,8 +73,8 @@ public class BanqueJpaApplication {
 	compte.setSolde(4500);
 	compte.setTaux(4);
 	Set <Client> cli=new HashSet();
-	cli.add(new Client("bla bla","elnur",LocalDate.of(2000, Month.JUNE, 5), new Banque("banque of France"), new Adresse(27,"rue Foche",49000, "Angers")));
-	cli.add(new Client("3 fois bla bla","joseph2",LocalDate.of(1995, Month.JUNE, 5), new Banque("banque of France"), new Adresse(27,"rue centre ville", 49100, "Laval")));
+	cli.add(new Client("bla bla","elnur",LocalDate.of(2000, Month.JUNE, 5), bn, new Adresse(27,"rue Foche",49000, "Angers")));
+	cli.add(new Client("3 fois bla bla","joseph2",LocalDate.of(1995, Month.JUNE, 5), bn, new Adresse(27,"rue centre ville", 49100, "Laval")));
 	compte.setClient(cli);
 	transaction.begin();
 	em.persist(compte);
@@ -83,7 +87,7 @@ public class BanqueJpaApplication {
 	vir.setMontant(50);
 	vir.setMotif("vvv");
 	vir.setDate(LocalDate.of(2022, Month.JUNE, 5));
-	vir.setCompte(null);	
+	vir.setCompte(compte);	
 	transaction.begin();
 	em.persist(vir);
 	transaction.commit();
@@ -93,7 +97,7 @@ public class BanqueJpaApplication {
 	ope.setDate(LocalDate.of(2022, Month.JUNE, 5));
 	ope.setMontant(300);
 	ope.setMotif("iiii");
-	ope.setCompte(null);
+	ope.setCompte(compte);
 	transaction.begin();
 	em.persist(ope);
 	transaction.commit();
